@@ -24,6 +24,7 @@ if [ ! -d "./spug" ]; then
 fi
 
 # 替换python-ldap版本, 之前编译是出现编译不过情况
+# 升级pip后可解决
 # sed -i 's/python-ldap==3.4.0/python-ldap==3.4.3/g' spug/spug_api/requirements.txt
 
 # 构建镜像
