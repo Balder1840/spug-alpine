@@ -3,6 +3,7 @@ FROM --platform=$TARGETPLATFORM python:3.11.3-alpine3.18
 WORKDIR /app
 COPY ./spug /app
 
+# 之前出现PyNaCl编译过慢问题，升级pip后解决
 # https://pypi.org/project/PyNaCl/
 # ENV LIBSODIUM_MAKE_ARGS=-j4
 
@@ -19,12 +20,14 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
     pip3 install --no-cache-dir gunicorn -i https://pypi.tuna.tsinghua.edu.cn/simple/ && \
     apk del .build-deps
 
-# musl-dev openssl-dev make  bcrypt, cryptography -i https://pypi.tuna.tsinghua.edu.cn/simple/
-#https://cryptography.io/en/latest/installation/#alpine
-# cargo pkgconfig
+# 之前出现bcrypt，cryptography编译不过情况，升级pip后解决
+# pip install --no-cache-dir bcrypt -i https://pypi.tuna.tsinghua.edu.cn/simple/
+# pip install --no-cache-dir cryptography -i https://pypi.tuna.tsinghua.edu.cn/simple/
+# https://cryptography.io/en/latest/installation/#alpine
+# musl-dev openssl-dev cargo pkgconfig
 
-#pip3 install --no-cache-dir bcrypt -i https://pypi.tuna.tsinghua.edu.cn/simple/ && \
-#    pip3 install --no-cache-dir cryptography -i https://pypi.tuna.tsinghua.edu.cn/simple/ && \
+# pip3 install --no-cache-dir bcrypt -i https://pypi.tuna.tsinghua.edu.cn/simple/ && \
+# pip3 install --no-cache-dir cryptography -i https://pypi.tuna.tsinghua.edu.cn/simple/ && \
 
 COPY docker/init_spug /usr/bin/
 COPY docker/nginx.conf /etc/nginx/
