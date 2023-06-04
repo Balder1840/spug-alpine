@@ -22,3 +22,4 @@ Build docker image for [spug](https://github.com/openspug/spug) base on [python 
 - [Multi-Platform Docker Builds](https://www.docker.com/blog/multi-platform-docker-builds/)
 - [Exports Overview](https://docs.docker.com/build/exporters/)
 - [Image and registry exporters](https://docs.docker.com/build/exporters/image-registry/)
+- [spug-service](https://github.com/liangwj72/spug-service)
