@@ -1,27 +1,22 @@
-FROM python:3.11.3-alpine3.18
+FROM --platform=$TARGETPLATFORM python:3.11.3-alpine3.18
 
 WORKDIR /app
 COPY ./spug /app
 
 # https://pypi.org/project/PyNaCl/
-ENV LIBSODIUM_MAKE_ARGS=-j4
+# ENV LIBSODIUM_MAKE_ARGS=-j4
 
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories && \
     apk add --no-cache --no-progress --virtual .build-deps \
-	build-base \
-	python3-dev \
-	openldap-dev \
+    build-base \
+    python3-dev \
+    openldap-dev \
     libffi-dev \
-    openssl-dev \
-    musl-dev \
-    make \
-    cargo \
-    pkgconfig \
-	gcc && \
-	cd spug_api \
+    gcc && \
+    cd spug_api \
     pip install -U pip \
-	pip3 install --no-cache-dir -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple/ && \
-	pip3 install --no-cache-dir gunicorn -i https://pypi.tuna.tsinghua.edu.cn/simple/ && \
+    pip3 install --no-cache-dir -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple/ && \
+    pip3 install --no-cache-dir gunicorn -i https://pypi.tuna.tsinghua.edu.cn/simple/ && \
     apk del .build-deps
 
 # musl-dev openssl-dev make  bcrypt, cryptography -i https://pypi.tuna.tsinghua.edu.cn/simple/
@@ -47,10 +42,10 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
     tzdata \
     bash \
     curl \
-	git \
-	libldap \
-	rsync \
-	openssh-client
+    git \
+    libldap \
+    rsync \
+    openssh-client
 
 
 #RUN localedef -c -i en_US -f UTF-8 en_US.UTF-8

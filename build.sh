@@ -24,11 +24,11 @@ if [ ! -d "./spug" ]; then
 fi
 
 # 替换python-ldap版本, 之前编译是出现编译不过情况
-sed -i 's/python-ldap==3.4.0/python-ldap==3.4.3/g' spug/spug_api/requirements.txt
+# sed -i 's/python-ldap==3.4.0/python-ldap==3.4.3/g' spug/spug_api/requirements.txt
 
 # 构建镜像
 # --provenance false
 # docker build -t ${IMG_NAME} .
 # docker buildx build --platform=linux/amd64,linux/arm64,linux/arm/v7 --output=type=image -t ${IMG_NAME} .
 # docker buildx build --platform=linux/arm/v7 --load -t ${IMG_NAME} .
- docker buildx build --platform=linux/amd64,linux/arm64,linux/arm/v7 --output=type=image,push=true -t ${IMG_NAME} .
+ docker buildx build --platform=linux/amd64,linux/arm64,linux/arm/v7 --output=type=image -t ${IMG_NAME} .
