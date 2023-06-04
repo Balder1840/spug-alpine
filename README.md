@@ -23,3 +23,6 @@ Build docker image for [spug](https://github.com/openspug/spug) base on [python 
 - [Exports Overview](https://docs.docker.com/build/exporters/)
 - [Image and registry exporters](https://docs.docker.com/build/exporters/image-registry/)
 - [spug-service](https://github.com/liangwj72/spug-service)
+- [spug-docker](https://github.com/quicklyon/spug-docker)
+- https://cryptography.io/en/latest/installation
+- https://spug.cc/docs/deploy-product
