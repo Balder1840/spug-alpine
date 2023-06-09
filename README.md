@@ -25,4 +25,6 @@ Build docker image for [spug](https://github.com/openspug/spug) base on [python 
 - [spug-service](https://github.com/liangwj72/spug-service)
 - [spug-docker](https://github.com/quicklyon/spug-docker)
 - https://cryptography.io/en/latest/installation
+- https://www.python-ldap.org/en/latest/installing.html
+- https://pip.pypa.io/en/stable/cli/pip_install/
 - https://spug.cc/docs/deploy-product
